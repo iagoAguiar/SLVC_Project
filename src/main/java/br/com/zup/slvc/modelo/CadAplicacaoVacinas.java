@@ -21,7 +21,7 @@ public class CadAplicacaoVacinas {
 	private String nomeVacina;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cadcplicacaovacinas_id")
+    @JoinColumn(name = "usuario_id")
 	private Usuario usuario;
 
 	//@NotEmpty(message = "Data de Vacinacao não pode ser vazia")	 
@@ -37,6 +37,7 @@ public class CadAplicacaoVacinas {
 		super();
 		this.nomeVacina = nomeVacina;
 		this.usuario = usuario;
+		
 	}
 
 	public String getNomeVacina() {

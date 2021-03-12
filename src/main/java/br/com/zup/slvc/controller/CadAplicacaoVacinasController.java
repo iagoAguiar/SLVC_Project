@@ -20,6 +20,7 @@ import br.com.zup.slvc.controller.dot.CadAplicacaoVacinasDTO;
 import br.com.zup.slvc.controller.form.CadAplicacaoVacinasForm;
 import br.com.zup.slvc.modelo.CadAplicacaoVacinas;
 import br.com.zup.slvc.repository.CadastroVacRepository;
+import br.com.zup.slvc.repository.UsuariosRepository;
 
 @Controller @RestController @RequestMapping("/cadastro")
 public class CadAplicacaoVacinasController {
@@ -28,6 +29,10 @@ public class CadAplicacaoVacinasController {
 	@Autowired
 	private CadastroVacRepository cadastroVacRepository;
 	
+	@Autowired
+	private UsuariosRepository usuariosRepository;
+	
+
 
 	
 	@GetMapping
@@ -40,7 +45,7 @@ public class CadAplicacaoVacinasController {
 	@PostMapping 	@Transactional
 	public ResponseEntity<CadAplicacaoVacinasDTO> cadastrar(@RequestBody @Valid CadAplicacaoVacinasForm cadAplicacaoVacinasForm, UriComponentsBuilder uriBuilder) {
 		
-		CadAplicacaoVacinas cadAplicacaoVacina = cadAplicacaoVacinasForm.converter(cadastroVacRepository);
+		CadAplicacaoVacinas cadAplicacaoVacina = cadAplicacaoVacinasForm.converter(cadastroVacRepository, usuariosRepository);
 			
 			cadastroVacRepository.save(cadAplicacaoVacina);
 			
