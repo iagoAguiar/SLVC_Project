@@ -1,6 +1,5 @@
 package br.com.zup.slvc.controller.dot;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,7 +12,7 @@ public class CadAplicacaoVacinasDTO {
 	private Long id;	
 	private String nomeVacina;
 	private Usuario usuario;
-	private LocalDateTime dataVacinacao;
+	private String dataVacinacao;
 	
 	public CadAplicacaoVacinasDTO(CadAplicacaoVacinas cadAplicacaoVacinas) {
 		this.id =  cadAplicacaoVacinas.getId();
@@ -47,11 +46,11 @@ public class CadAplicacaoVacinasDTO {
 		this.usuario = usuario;
 	}
 
-	public LocalDateTime getDataVacinacao() {
+	public String getDataVacinacao() {
 		return dataVacinacao;
 	}
 
-	public void setDataVacinacao(LocalDateTime dataVacinacao) {
+	public void setDataVacinacao(String dataVacinacao) {
 		this.dataVacinacao = dataVacinacao;
 	}
 	

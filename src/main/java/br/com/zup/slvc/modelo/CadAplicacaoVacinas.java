@@ -1,7 +1,5 @@
 package br.com.zup.slvc.modelo;
 
-import java.time.LocalDateTime;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,20 +10,22 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 
 
+
 @Entity
 public class CadAplicacaoVacinas {
 	@Id 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@NotEmpty(message = "Nome não pode ser vazio")
+	 @NotEmpty(message = "Nome não pode ser vazio")
 	private String nomeVacina;
 
 	@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "usuario_id")
 	private Usuario usuario;
 
-	//@NotEmpty(message = "Data de Vacinacao não pode ser vazia")	 
-	private LocalDateTime dataVacinacao;
+	
+	 @NotEmpty(message = "Data de Vacinacao não pode ser vazia")	 
+	private String dataVacinacao;
 
 
 	@Deprecated    
@@ -33,11 +33,11 @@ public class CadAplicacaoVacinas {
 		super();
 	}
 
-	public CadAplicacaoVacinas( String nomeVacina, Usuario usuario) {
+	public CadAplicacaoVacinas( String nomeVacina, Usuario usuario, String dataVacinacao) {
 		super();
 		this.nomeVacina = nomeVacina;
 		this.usuario = usuario;
-		
+		this.dataVacinacao = dataVacinacao;
 	}
 
 	public String getNomeVacina() {
@@ -56,11 +56,11 @@ public class CadAplicacaoVacinas {
 		this.usuario = usuario;
 	}
 
-	public LocalDateTime getDataVacinacao() {
+	public String getDataVacinacao() {
 		return dataVacinacao;
 	}
 
-	public void setDataVacinacao(LocalDateTime dataVacinacao) {
+	public void setDataVacinacao(String dataVacinacao) {
 		this.dataVacinacao = dataVacinacao;
 	}
 

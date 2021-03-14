@@ -19,6 +19,17 @@ public class ErroDeValidacaoHandler {
         webRequest.getResponse().sendError(HttpStatus.BAD_REQUEST.value(), exception.getMessage());
     }
 	
+    
+    
+    
+    @ExceptionHandler(IllegalArgumentException.class)
+    public void handleConstraintViolationException(IllegalArgumentException exception,
+    		ServletWebRequest webRequest) throws IOException {
+    	webRequest.getResponse().sendError(HttpStatus.BAD_REQUEST.value(), exception.getMessage());
+    }
+    
+    
+    
 	
 	
 }

@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -21,19 +21,19 @@ public class Usuario {
 	@Id 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotEmpty(message = "Nome não pode ser vazio")
+	@NotNull(message = "Nome não pode ser vazio")
 	private String nome;
 	
 	@Column(unique = true)	
-	@NotEmpty(message = "CPF não pode ser vazio")	  
+	@NotNull(message = "CPF não pode ser vazio")	  
 	@CPF(message = "CPF inválido")	
 	private String cpf;
 	
 	@Column(unique = true)	
-	@NotEmpty(message = "Email não pode ser vazio")	  @Email
+	@NotNull(message = "Email não pode ser vazio")	  @Email
 	private String email;
 	
-	@NotEmpty(message = "Data de nascimento não pode ser vazia")	 
+	@NotNull(message = "Data de nascimento não pode ser vazia")	 
 	private String dataNascimento;
 		
 	/*
@@ -46,9 +46,7 @@ public class Usuario {
 		super();
 	}
 
-	public Usuario(Long id) {
-		
-	}
+
 	
 	public Usuario(String nome, String cpf,String email, String dataNascimento) {
 		super();
